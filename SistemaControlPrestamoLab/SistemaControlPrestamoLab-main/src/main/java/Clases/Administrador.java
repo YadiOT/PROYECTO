@@ -7,7 +7,7 @@ package Clases;
 /**
  *
  * @author
-
+*/
 import java.util.Date;
 
 public class Administrador extends Usuario {
