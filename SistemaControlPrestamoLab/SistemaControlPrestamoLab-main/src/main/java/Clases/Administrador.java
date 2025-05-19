@@ -3,11 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Clases;
-//tutorial prueba//
+
 /**
  *
- * @author Soldado Caído: Juan Carlos Chavez Machaca
- */
+ * @author
 
 import java.util.Date;
 

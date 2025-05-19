@@ -5,7 +5,7 @@
 package Clases;
 
 /*
- * Autor: Equipo Soldados Caídos
+ * Autor: LOS INSERVIBLES
  */
 public class Laboratorio {
     private int idLaboratorio; //Para lectura y edición

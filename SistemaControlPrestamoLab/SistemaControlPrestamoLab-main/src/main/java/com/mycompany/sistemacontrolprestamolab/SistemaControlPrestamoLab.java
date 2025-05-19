@@ -7,17 +7,7 @@ package com.mycompany.sistemacontrolprestamolab;
 import Ventanas.login;
 
 /**
- *
- * EQUIPO: SOLDADOS CAÍDOS
- * INTEGRANTES: 
- * Juan Carlos Chavez Machaca
- * Fernando Castro Vargas
- * Kevin Jheferson Jiménez Quisbert
- * Juan Antonio Ramos Rojas
- * Erick Ivan Luna Tarqui
- * 
- * PROYECTO: Sistema de Control y Préstamos de Laboratorios
- * 
+
  */
 public class SistemaControlPrestamoLab {
 

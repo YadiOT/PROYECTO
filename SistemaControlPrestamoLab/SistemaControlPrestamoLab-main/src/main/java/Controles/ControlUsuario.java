@@ -6,7 +6,7 @@ package Controles;
 
 /**
  *
- * @author Equipo Soldados Caídos
+ * @author 
  */
 
 import java.sql.Connection;

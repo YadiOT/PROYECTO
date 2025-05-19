@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  * Controlador para operaciones CRUD sobre la tabla equipos.
- * Autor: Equipo Soldados Caídos
+ * Autor: 
  */
 public class ControladorEquipo {
 

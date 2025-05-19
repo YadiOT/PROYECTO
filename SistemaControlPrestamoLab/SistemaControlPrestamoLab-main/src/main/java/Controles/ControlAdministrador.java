@@ -6,7 +6,7 @@ package Controles;
 
 /**
  *
- * @author Soldado Caído: Juan Carlos Chavez Machaca
+ * @author 
  */
 
 import Clases.Administrador;

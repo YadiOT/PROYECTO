@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  * Controlador para operaciones CRUD sobre la tabla laboratorio.
- * Autor: Equipo Soldados Caídos
+ * Autor: 
  */
 public class ControladorLaboratorio {
 
