@@ -29,7 +29,7 @@ public class NuevoAdministrador extends JFrame {
     private void inicializarComponentes() {
         setTitle("Sistema de Control de Préstamos - Nuevo Administrador");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setMinimumSize(new Dimension(600, 600)); // Tamaño más compacto
+        setMinimumSize(new Dimension(900, 700)); // Tamaño más grande
         setResizable(true); // Permitimos redimensionar la ventana
 
         // Fondo con degradado
@@ -61,8 +61,8 @@ public class NuevoAdministrador extends JFrame {
         formPanel.setBackground(Color.WHITE);
         formPanel.setOpaque(false);
         formPanel.setBorder(new EmptyBorder(20, 20, 20, 20));
-        formPanel.setLayout(null);
-        formPanel.setPreferredSize(new Dimension(500, 500));
+        formPanel.setLayout(new GridBagLayout());
+        formPanel.setPreferredSize(new Dimension(800, 600));
 
         // Añadir el panel al fondoPanel usando GridBagConstraints
         GridBagConstraints gbc = new GridBagConstraints();
@@ -73,38 +73,48 @@ public class NuevoAdministrador extends JFrame {
         gbc.fill = GridBagConstraints.NONE;
         fondoPanel.add(formPanel, gbc);
 
+        // Configuración de GridBagConstraints para el formPanel
+        GridBagConstraints c = new GridBagConstraints();
+        c.insets = new Insets(10, 10, 10, 10); // Espaciado entre componentes
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.anchor = GridBagConstraints.WEST;
+
         // Título
         JLabel titulo = new JLabel("Registrar Nuevo Administrador", SwingConstants.CENTER);
-        titulo.setBounds(0, 10, 500, 30);
         titulo.setFont(new Font("Segoe UI", Font.BOLD, 20));
         titulo.setForeground(new Color(30, 60, 120));
-        formPanel.add(titulo);
+        c.gridx = 0;
+        c.gridy = 0;
+        c.gridwidth = 4; // Ocupa ambas columnas
+        c.weightx = 1.0;
+        formPanel.add(titulo, c);
 
         // Subtítulo
         JLabel subtitulo = new JLabel("Complete los datos para crear un nuevo administrador", SwingConstants.CENTER);
-        subtitulo.setBounds(0, 40, 500, 20);
         subtitulo.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         subtitulo.setForeground(Color.GRAY);
-        formPanel.add(subtitulo);
+        c.gridy = 1;
+        formPanel.add(subtitulo, c);
 
-        // Campos del formulario (dos columnas)
-        int padding = 30;
+        // Campos del formulario
         int labelWidth = 120;
-        int fieldWidth = 150;
+        int fieldWidth = 200;
         int fieldHeight = 30;
-        int yStart = 70;
-        int yGap = 40;
 
         // Columna izquierda
         // Nombre
+        c.gridwidth = 1;
+        c.weightx = 0;
+        c.gridy = 2;
+        c.gridx = 0;
         JLabel nombreLabel = new JLabel("Nombre:");
-        nombreLabel.setBounds(padding, yStart, labelWidth, 20);
         nombreLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         nombreLabel.setForeground(Color.DARK_GRAY);
-        formPanel.add(nombreLabel);
+        formPanel.add(nombreLabel, c);
 
+        c.gridx = 1;
         cajaNombre = new JTextField();
-        cajaNombre.setBounds(padding + labelWidth, yStart, fieldWidth, fieldHeight);
+        cajaNombre.setPreferredSize(new Dimension(fieldWidth, fieldHeight));
         cajaNombre.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         cajaNombre.setForeground(Color.BLACK);
         cajaNombre.setBackground(new Color(245, 245, 245));
@@ -131,17 +141,19 @@ public class NuevoAdministrador extends JFrame {
                 }
             }
         });
-        formPanel.add(cajaNombre);
+        formPanel.add(cajaNombre, c);
 
         // Apellido Paterno
+        c.gridy = 3;
+        c.gridx = 0;
         JLabel appLabel = new JLabel("Apellido Paterno:");
-        appLabel.setBounds(padding, yStart + yGap, labelWidth, 20);
         appLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         appLabel.setForeground(Color.DARK_GRAY);
-        formPanel.add(appLabel);
+        formPanel.add(appLabel, c);
 
+        c.gridx = 1;
         cajaAPP = new JTextField();
-        cajaAPP.setBounds(padding + labelWidth, yStart + yGap, fieldWidth, fieldHeight);
+        cajaAPP.setPreferredSize(new Dimension(fieldWidth, fieldHeight));
         cajaAPP.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         cajaAPP.setForeground(Color.BLACK);
         cajaAPP.setBackground(new Color(245, 245, 245));
@@ -168,17 +180,19 @@ public class NuevoAdministrador extends JFrame {
                 }
             }
         });
-        formPanel.add(cajaAPP);
+        formPanel.add(cajaAPP, c);
 
         // Apellido Materno
+        c.gridy = 4;
+        c.gridx = 0;
         JLabel apmLabel = new JLabel("Apellido Materno:");
-        apmLabel.setBounds(padding, yStart + 2 * yGap, labelWidth, 20);
         apmLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         apmLabel.setForeground(Color.DARK_GRAY);
-        formPanel.add(apmLabel);
+        formPanel.add(apmLabel, c);
 
+        c.gridx = 1;
         cajaAPM = new JTextField();
-        cajaAPM.setBounds(padding + labelWidth, yStart + 2 * yGap, fieldWidth, fieldHeight);
+        cajaAPM.setPreferredSize(new Dimension(fieldWidth, fieldHeight));
         cajaAPM.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         cajaAPM.setForeground(Color.BLACK);
         cajaAPM.setBackground(new Color(245, 245, 245));
@@ -205,17 +219,19 @@ public class NuevoAdministrador extends JFrame {
                 }
             }
         });
-        formPanel.add(cajaAPM);
+        formPanel.add(cajaAPM, c);
 
         // Correo Electrónico
+        c.gridy = 5;
+        c.gridx = 0;
         JLabel correoLabel = new JLabel("Correo Electrónico:");
-        correoLabel.setBounds(padding, yStart + 3 * yGap, labelWidth, 20);
         correoLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         correoLabel.setForeground(Color.DARK_GRAY);
-        formPanel.add(correoLabel);
+        formPanel.add(correoLabel, c);
 
+        c.gridx = 1;
         cajaCorreo = new JTextField();
-        cajaCorreo.setBounds(padding + labelWidth, yStart + 3 * yGap, fieldWidth, fieldHeight);
+        cajaCorreo.setPreferredSize(new Dimension(fieldWidth, fieldHeight));
         cajaCorreo.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         cajaCorreo.setForeground(Color.BLACK);
         cajaCorreo.setBackground(new Color(245, 245, 245));
@@ -242,17 +258,19 @@ public class NuevoAdministrador extends JFrame {
                 }
             }
         });
-        formPanel.add(cajaCorreo);
+        formPanel.add(cajaCorreo, c);
 
         // Fecha de Inicio
+        c.gridy = 6;
+        c.gridx = 0;
         JLabel fechaLabel = new JLabel("Fecha de Inicio:");
-        fechaLabel.setBounds(padding, yStart + 4 * yGap, labelWidth, 20);
         fechaLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         fechaLabel.setForeground(Color.DARK_GRAY);
-        formPanel.add(fechaLabel);
+        formPanel.add(fechaLabel, c);
 
+        c.gridx = 1;
         cajaFI = new JTextField();
-        cajaFI.setBounds(padding + labelWidth, yStart + 4 * yGap, fieldWidth, fieldHeight);
+        cajaFI.setPreferredSize(new Dimension(fieldWidth, fieldHeight));
         cajaFI.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         cajaFI.setForeground(Color.BLACK);
         cajaFI.setBackground(new Color(245, 245, 245));
@@ -279,17 +297,19 @@ public class NuevoAdministrador extends JFrame {
                 }
             }
         });
-        formPanel.add(cajaFI);
+        formPanel.add(cajaFI, c);
 
         // NIT
+        c.gridy = 7;
+        c.gridx = 0;
         JLabel nitLabel = new JLabel("Nro. Título:");
-        nitLabel.setBounds(padding, yStart + 5 * yGap, labelWidth, 20);
         nitLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         nitLabel.setForeground(Color.DARK_GRAY);
-        formPanel.add(nitLabel);
+        formPanel.add(nitLabel, c);
 
+        c.gridx = 1;
         cajaNIT = new JTextField();
-        cajaNIT.setBounds(padding + labelWidth, yStart + 5 * yGap, fieldWidth, fieldHeight);
+        cajaNIT.setPreferredSize(new Dimension(fieldWidth, fieldHeight));
         cajaNIT.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         cajaNIT.setForeground(Color.BLACK);
         cajaNIT.setBackground(new Color(245, 245, 245));
@@ -316,20 +336,20 @@ public class NuevoAdministrador extends JFrame {
                 }
             }
         });
-        formPanel.add(cajaNIT);
+        formPanel.add(cajaNIT, c);
 
         // Columna derecha
-        int rightColumnX = padding + labelWidth + fieldWidth + 20; // Espacio entre columnas
-
         // Contraseña
+        c.gridy = 2;
+        c.gridx = 2;
         JLabel contraLabel = new JLabel("Contraseña:");
-        contraLabel.setBounds(rightColumnX, yStart, labelWidth, 20);
         contraLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         contraLabel.setForeground(Color.DARK_GRAY);
-        formPanel.add(contraLabel);
+        formPanel.add(contraLabel, c);
 
+        c.gridx = 3;
         cajaContra = new JTextField();
-        cajaContra.setBounds(rightColumnX + labelWidth, yStart, fieldWidth, fieldHeight);
+        cajaContra.setPreferredSize(new Dimension(fieldWidth, fieldHeight));
         cajaContra.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         cajaContra.setForeground(Color.BLACK);
         cajaContra.setBackground(new Color(245, 245, 245));
@@ -356,17 +376,19 @@ public class NuevoAdministrador extends JFrame {
                 }
             }
         });
-        formPanel.add(cajaContra);
+        formPanel.add(cajaContra, c);
 
         // RU
+        c.gridy = 3;
+        c.gridx = 2;
         JLabel ruLabel = new JLabel("R.U.:");
-        ruLabel.setBounds(rightColumnX, yStart + yGap, labelWidth, 20);
         ruLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         ruLabel.setForeground(Color.DARK_GRAY);
-        formPanel.add(ruLabel);
+        formPanel.add(ruLabel, c);
 
+        c.gridx = 3;
         cajaRU = new JTextField();
-        cajaRU.setBounds(rightColumnX + labelWidth, yStart + yGap, fieldWidth, fieldHeight);
+        cajaRU.setPreferredSize(new Dimension(fieldWidth, fieldHeight));
         cajaRU.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         cajaRU.setForeground(Color.BLACK);
         cajaRU.setBackground(new Color(245, 245, 245));
@@ -393,31 +415,35 @@ public class NuevoAdministrador extends JFrame {
                 }
             }
         });
-        formPanel.add(cajaRU);
+        formPanel.add(cajaRU, c);
 
         // Rol
+        c.gridy = 4;
+        c.gridx = 2;
         JLabel rolLabel = new JLabel("Rol:");
-        rolLabel.setBounds(rightColumnX, yStart + 2 * yGap, labelWidth, 20);
         rolLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         rolLabel.setForeground(Color.DARK_GRAY);
-        formPanel.add(rolLabel);
+        formPanel.add(rolLabel, c);
 
+        c.gridx = 3;
         cajarol = new JComboBox<>(new String[]{"Administrador"});
-        cajarol.setBounds(rightColumnX + labelWidth, yStart + 2 * yGap, fieldWidth, fieldHeight);
+        cajarol.setPreferredSize(new Dimension(fieldWidth, fieldHeight));
         cajarol.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         cajarol.setBackground(new Color(245, 245, 245));
         cajarol.setForeground(Color.BLACK);
-        formPanel.add(cajarol);
+        formPanel.add(cajarol, c);
 
         // CI
+        c.gridy = 5;
+        c.gridx = 2;
         JLabel ciLabel = new JLabel("C.I.:");
-        ciLabel.setBounds(rightColumnX, yStart + 3 * yGap, labelWidth, 20);
         ciLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         ciLabel.setForeground(Color.DARK_GRAY);
-        formPanel.add(ciLabel);
+        formPanel.add(ciLabel, c);
 
+        c.gridx = 3;
         cajaCI = new JTextField();
-        cajaCI.setBounds(rightColumnX + labelWidth, yStart + 3 * yGap, fieldWidth, fieldHeight);
+        cajaCI.setPreferredSize(new Dimension(fieldWidth, fieldHeight));
         cajaCI.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         cajaCI.setForeground(Color.BLACK);
         cajaCI.setBackground(new Color(245, 245, 245));
@@ -444,17 +470,19 @@ public class NuevoAdministrador extends JFrame {
                 }
             }
         });
-        formPanel.add(cajaCI);
+        formPanel.add(cajaCI, c);
 
         // Salario
+        c.gridy = 6;
+        c.gridx = 2;
         JLabel salarioLabel = new JLabel("Salario:");
-        salarioLabel.setBounds(rightColumnX, yStart + 4 * yGap, labelWidth, 20);
         salarioLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         salarioLabel.setForeground(Color.DARK_GRAY);
-        formPanel.add(salarioLabel);
+        formPanel.add(salarioLabel, c);
 
+        c.gridx = 3;
         cajaSalario = new JTextField();
-        cajaSalario.setBounds(rightColumnX + labelWidth, yStart + 4 * yGap, fieldWidth, fieldHeight);
+        cajaSalario.setPreferredSize(new Dimension(fieldWidth, fieldHeight));
         cajaSalario.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         cajaSalario.setForeground(Color.BLACK);
         cajaSalario.setBackground(new Color(245, 245, 245));
@@ -481,16 +509,15 @@ public class NuevoAdministrador extends JFrame {
                 }
             }
         });
-        formPanel.add(cajaSalario);
+        formPanel.add(cajaSalario, c);
 
         // Botones
-        int buttonWidth = 120;
-        int buttonHeight = 30;
-        int buttonY = yStart + 6 * yGap + 10; // Ajustamos la posición
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 0));
+        buttonPanel.setOpaque(false);
 
         // Botón "Guardar"
         JButton botonGuardar = new JButton("Guardar");
-        botonGuardar.setBounds(padding, buttonY, buttonWidth, buttonHeight);
+        botonGuardar.setPreferredSize(new Dimension(120, 30));
         botonGuardar.setBackground(new Color(30, 120, 60));
         botonGuardar.setForeground(Color.WHITE);
         botonGuardar.setFont(new Font("Segoe UI", Font.BOLD, 14));
@@ -498,7 +525,6 @@ public class NuevoAdministrador extends JFrame {
         botonGuardar.setBorderPainted(false);
         botonGuardar.setCursor(new Cursor(Cursor.HAND_CURSOR));
         botonGuardar.setBorder(new LineBorder(new Color(30, 120, 60), 1, true));
-        // Efecto hover
         botonGuardar.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
@@ -510,13 +536,12 @@ public class NuevoAdministrador extends JFrame {
                 botonGuardar.setBackground(new Color(30, 120, 60));
             }
         });
-        // Acción del botón "Guardar"
         botonGuardar.addActionListener(e -> guardarAdministrador());
-        formPanel.add(botonGuardar);
+        buttonPanel.add(botonGuardar);
 
         // Botón "Cancelar"
         JButton botonCancelar = new JButton("Cancelar");
-        botonCancelar.setBounds(padding + labelWidth + fieldWidth + 20 + labelWidth + fieldWidth - buttonWidth, buttonY, buttonWidth, buttonHeight);
+        botonCancelar.setPreferredSize(new Dimension(120, 30));
         botonCancelar.setBackground(new Color(180, 70, 70));
         botonCancelar.setForeground(Color.WHITE);
         botonCancelar.setFont(new Font("Segoe UI", Font.BOLD, 14));
@@ -536,7 +561,15 @@ public class NuevoAdministrador extends JFrame {
             }
         });
         botonCancelar.addActionListener(e -> dispose());
-        formPanel.add(botonCancelar);
+        buttonPanel.add(botonCancelar);
+
+        // Añadir panel de botones
+        c.gridy = 8;
+        c.gridx = 0;
+        c.gridwidth = 4;
+        c.fill = GridBagConstraints.NONE;
+        c.anchor = GridBagConstraints.CENTER;
+        formPanel.add(buttonPanel, c);
     }
 
     private void guardarAdministrador() {
